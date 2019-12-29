@@ -21,8 +21,6 @@
 \newenvironment{conditions}
   {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
   {\end{tabular}\par\vspace{\belowdisplayskip}}
-
-\newcommand{\bigO}{\mathcal{O}}
 \begin{document}
 
 \title
@@ -32,70 +30,83 @@
 }
 \author
 {
-    Federico Santamorena \\
-    \href{https://github.com/yatima1460/Kamina}{https://github.com/yatima1460/Kamina} \\ 
+    The Kamina Project \\
+    \href{https://github.com/TheKaminaProject/Kamina}{https://github.com/TheKaminaProject/Kamina} \\ 
 }
 \maketitle
 
 
 
+\filbreak
 \section{Global meta-data}
-
 \begin{verbatim}
 
 curl -X GET http://localhost:9001/api/graph
 
     {
-        "root": "id"
+        "root": "ID"
     }
 
 \end{verbatim}
 
-The server name, description and other metadata is not needed to be saved elsewhere, it would be redundant, that same data is actually the data of the Root  Room.
+The server name, description and other metadata is not needed to be saved elsewhere, it would be redundant, that same data is actually the data of the Root Room.
 
 Return Codes:
 \begin{verbatim}
     200 if Root Room exists
     404 if Root Room does not exist
     403 if Root Room does not have public permissions
+\end{verbatim}
 
+
+\filbreak
+\section{Rooms}
+
+\subsection{Get Room Info}
+\begin{verbatim}
+
+curl -X GET http://localhost:9001/api/graph/ID
+
+    {
+        "name": "string"
+        "description: "string"
+        //TODO
+    }
+
+
+
+\end{verbatim}
+Return Codes:
+\begin{verbatim}
+    200 if Room exists and user is allowed
+    404 if Room does not exist
+    403 if Room does not have public permissions
 \end{verbatim}
 
 
 
 
-\section{Rooms}
+\subsection{Change Room name}
+
+\begin{verbatim}
+
+curl -H "Content-Type: application/json" -X POST http://localhost:9001/api/graph/ID -d 
+
+    { 
+        "name": "newnamestring" 
+    }
+
+\end{verbatim}
+
+Return Codes:
+\begin{verbatim}
+    200 if Room exists and name is correct
+    404 if Room does not exist
+    403 if forbidden to change name
+\end{verbatim}
 
 
-\begin{itemize}
-    \item POST /api/graph/create\_room
-    \begin{itemize}
-        \item returns Room ID
-    \end{itemize}
-    \item POST /api/graph/ID/name
-    \begin{itemize}
-        \item change Room name
-    \end{itemize}
-    \item GET /api/graph/ID/name
-    \begin{itemize}
-        \item get Room name
-    \end{itemize}
-\end{itemize}
-
-\begin{itemize}
-    \item POST /api/room/ID
-    \begin{itemize}
-        \item Owner
-    \end{itemize}
-\end{itemize}
-
-\begin{itemize}
-    \item GET /api/room/ID
-    \begin{itemize}
-        \item Owner
-    \end{itemize}
-\end{itemize}
-
+// create room returns Room ID
 
 
 \section{Messages}
