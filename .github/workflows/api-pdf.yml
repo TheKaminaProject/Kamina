@@ -1,0 +1,28 @@
+name: api-pdf
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: apt update
+      run: sudo apt update
+    - name: install latexmk
+      run: sudo apt install latexmk
+    - name: build pdf
+      run: latexmk API.tex -pdf
+        asset_content_type: application/pdf
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: https://github.com/TheKaminaProject/Kamina/releases/tag/1.StellarEngine
+        asset_path: ./API.pdf
+        asset_name: API.pdf
+        asset_content_type: application/pdf
