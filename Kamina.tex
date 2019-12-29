@@ -38,4 +38,272 @@
 \maketitle
 
 
+
+\section{Acknowledgments}
+TO WRITE?
+
+\section{Introduction}
+
+In this paper, I want to propose a clean and easy way on how social networks in the future should be built and what are the problems an above than average user experiences in current implementations. \\
+This discussion is gonna be between a philosophical and realistic discussion, on what are the current problems and how to fix them.
+
+
+\newpage
+
+\section{The Pillars}
+
+Let's get to the main issue, what are the pillars every social network should have, what are those fundamental digital human rights every social should respect? \\
+A modification of the laws of robotics from Asimov are the best course of action:
+
+
+
+\begin{enumerate}
+\item A social network may not change or reject the data of another human being or, through vulnerabilities, allow a human being's data to being rejected or changed, all data created by a user is owned by the user, retroactively in the past and in the future; in both the axes of time and space, this may allow a user to edit and delete any past message or data in the entire server of residence.
+\item A social network must obey the orders given by its users, except where such orders would conflict with the First Law.
+\item A social network should protect itself, all information inside the social network should be as open and as redundant as possible unless this goes against the First and Second laws. \\
+No security by obscurity.
+ 
+% TO DISCUSS: is data redundancy part of The First Law?
+% Should data created by a user be sacred and eternal or 
+
+% \item A social network should not allow the volountary leakage of private data and metadata of a user of any kind, included eso-personalities, and metadata related to Rooms ownership.
+
+\end{enumerate}
+
+
+
+\section{The problems}
+
+
+\subsection*{Over-engineering}
+One of the biggest problems is over-engineering, in a lot of social networks implementations you will find the concept of personal Profiles, Pages, Groups, Secret Chats, Threads, Replies and so on; are these really needed? \\
+Should these implementations be considered something that enhances human speech or are actually over-engineering and multiple sides of the same coins, making it more harder to approach another human being and even more making it super hard to design a clean software architecture?
+
+
+
+
+
+\subsection{Cybersquatting}
+
+The concept of stealing usernames, when a user steals your username you need a different one to be able to register to a platform; Discord is one of the few social networks allowing to have the same username.\\
+Even when not done maliciously it's still a annoying to not be able to have a username of your choice.
+Steam allows this by having an hidden username used for their internal systems and login, and a public one.
+\newline
+\textbf{Rejecting a username is a violation of the First Law.}
+
+
+\subsection{Difficulty of communication and expression}
+
+Some users and friends reported a problem about communication in some social networks, very few social networks allow to reply to another message posted by another user. \\
+Facebook is one of them, Discord does not allow replying to another user in a chat and when there are a lot of messages mixed from various users it's gonna be even more messy. \\
+Another related problem is the fact that some social networks force the user to be inside a specific category, like channels in Discord, instead of allowing the user the create his own Thread.
+Another related problem is that in some social networks like Reddit, users create continuously Throwaway Accounts, temporary accounts for only few posts to hide their real identities.
+
+\textbf{Not allowing a user to reply to another user in a discussion and spawning a new room to chat or enforcing specific category chatrooms is a violation of the Second Law.}
+
+TODO: this problem needs to be expressed more cleanly
+
+
+\subsection{Multi-accounting and the identity of self}
+
+Another hurdle some users and friends reported is the problem of multiple identities, a user would like to have one identity for a family group, and maybe another for another group without revealing the same account or maybe just an Artist page without revealing who is behind; currently it's possible only in very few social networks and the only way is to multi-account; based on my knowledge there is not a social network that allows having multiple identities under the same umbrella account. \\
+Services like mobile chats even need another phone number, this is outrageous. 
+The freedom of having multiple identities should be as important as being anonymous.
+
+\textbf{Not allowing the creation of multiple identities and preventing the leakage of personalities is a violation of both the First Law and Second Law}
+
+\subsection{Single point of failure}
+
+I'm not gonna discuss here about centralization, but it's pretty obvious how almost all current social network implementations have a problem of centralization as being a single point of failure, probably the most successful attempt has been Mastodon to create a decentralized social network and Matrix.org, but they lack the concept of Identity Freedom.
+
+\textbf{But we can agree centralization goes against the Third Law}
+
+
+\subsection{Too narrow or too broad?}
+
+Another important point made by Tom Scott in his talk: "There is no algorithm for truth", is that designing a social network that censors almost everything or another one that allows every type of freedom of speech are two sides of the same coin, in the long run a social network allowing *everything* will become an echo chamber too; for the entire talk watch his video before making your point:
+
+\href{https://www.youtube.com/watch?v=leX541Dr2rU}{There is No Algorithm for Truth - with Tom Scott | 
+The Royal Institution
+}
+
+
+
+
+\textbf{Censoring data is a violation of the First Law, but also not allowing a user to censor subjectively data created by another user is a violation of the Second Law, a fair social network should allow every user to decide what data they censor on their own relative view of the social, but by itself a social network should be inert and passive; it's the same concept of Adblockers, every ad on the web should be allowed but at the same time users should be also allowed to decide how they filter their own data}
+
+
+
+\section{The deconstruction of social networking}
+
+In the next subsections I will try to solve the problems posted in the previous headings; the realization is that all social networks are actually various sides of the same coin: they are all re-implementations of various graph systems.
+
+\subsection{Rooms}
+
+Here I want to propose a clean and simple solution on how over-engineering should be solved: 
+\newline
+how to implement Profiles, Pages, Groups, Secret Chats, Threads, Replies and so on\dots
+
+Let's get some definitions:
+
+\begin{itemize}
+
+    \item A Room is a Node in the Graph.
+
+    \item A Room is just a set that can contain Messages.
+
+    \item Rooms can be nested/linked infinitely inside other Rooms:
+
+    To avoid creating a hierarchical tree structure like discussions in Reddit and having \href{https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem}{The diamond problem} the entire Social Network should be a Graph of Rooms connecting each others.
+
+    \item A discussion between users happens inside a Room.
+
+    \item A server hosts a Root Room, and then as many as other Rooms connected inside the graph, decentralization happens when two servers Link two of their Rooms together.
+
+\end{itemize}
+
+\subsubsection*{Some possible default implementations can be:}
+
+\begin{itemize}
+    \item \textbf{Public Profile Page}
+    
+    A profile page is just a Room in which only the Owner of the Room has the Write permission and the username is generally public.
+
+    \item \textbf{Private Profile Page} (aka: Instagram and Twitter private profiles)
+    
+    A private page is just a Room in which only some users inside a set are allowed to join and see.
+
+    \item \textbf{Page}
+
+    A Page like in Facebook is just a Room in which only the Owner and other selected users are allowed to write and the usernames are generally hidden.
+
+    \item \textbf{Group}
+
+    A group is just a Room in which everyone has write permissions.
+    Generally a Group similar to Facebook ones is just a Room in which all permissions are as lenient as possible.
+
+    \item \textbf{Anonymous Group} like 4chan /b/
+
+    A Room in which all usernames are hidden
+
+    \item \textbf{Conversation}
+
+    A conversation between two users is just a Room in which only the two friends are allowed to join and to write.
+
+    \item \textbf{Forum}
+
+    A forum is a Room in which users Link other Rooms.
+
+    \item \textbf{Reply}
+
+    When a user spawns a new Room linked to a Message
+
+    \subsubsection*{Other interesting implementations can be:}
+
+    \item \textbf{Private Owner Rooms}
+    
+    A private Room only the Owner can see and join, useful to save Notes and Messages
+
+    \item \textbf{Ask.fm-like}
+    
+    A Room in which everyone but the Owner is anonymous
+
+    
+    % \item \textbf{Black Hole?}
+    
+    % A Room in which no one is allowed to read, but everyone is allowed to write? Maybe? Mka
+    
+
+\end{itemize}
+
+As you can see I believe all possible social networks can be actually implemented using the concept of Rooms and Permissions, and the most amazing thing is that Kamina is actually a generic meta-social network allowing a user to create its own implementation inside.
+\newline
+
+That said some possible Room permissions and meta-data may be:
+
+\begin{itemize}
+    \item Owner
+    \begin{itemize}
+        \item Always has all permissions inside its own room
+        \item If the owner blocks users it can't prevent them from deleting their own messages written in the past in the Room, so a blocked user should be able to only see its own messages inside a Room in which it has been blocked. This is an issue on Facebook.
+    \end{itemize}
+    \item Image/Avatar
+    \begin{itemize}
+        \item Maybe stored on IPFS?
+    \end{itemize}
+    \item Textual Description
+    \begin{itemize}
+        \item Maybe stored on IPFS?
+    \end{itemize}
+    \item Set of users allowed to write
+    \item Set of usernames hidden?
+    Further discussion is needed here, isn't hiding usernames technically the same as making eso-personalities useless?
+    Maybe allowing the username to create a throwaway personality?
+
+\end{itemize}
+
+
+\subsection{Eso-personality}
+
+A user registers itself into a Server hosting the Graph of Rooms.
+
+Similar to Steam the Social Network will have an internal representation of the user with primary key being the email, because there is no need and reason for two users to have the same email, and here is the difference with all other social networks: multiple public identities to allow the Eso-personality freedom.
+
+The Endo-personality is the internal representation of a user, the Eso-personalities is what other users will see.
+
+\subsubsection*{Eso-personality}
+
+A user is allowed to create how many eso-personalities it wants[1], with a username and an associated avatar and linked Rooms or other meta-data in the internal description of it.
+
+An Eso-personality is how other users will see another user, there will be no global public account (only a global private one), but a user can choose to use the eso-personality it wants to join inside a Room: in this way the Freedom of Eso-personalities is preserved; a user can have a public account for family and friends, another for its artist page without revealing its identity, another one for other privacy related reasons and secret Rooms. \\
+
+[1] With limits decided by the Server Admin
+
+\subsection{Preventing Eso-personality doxxing}
+
+TO WRITE
+
+If banning an internal account is allowed noticing some eso-personalities get banned as well will allow doxxing
+
+\subsection{Why moving account to another server is not technically possible?}
+
+TO WRITE
+
+\subsection{Why decentralized and not distributed}
+
+TO WRITE
+
+% \subsection{Permissions}
+
+% \subsubsection{Room}
+
+% Some generic permissions Rooms can have are:
+
+% - All eso-personalities are public, write permission usernames are hidden, all usernames are hidden
+
+% - Who is the owner
+
+% - Set of users allowed to write 
+
+% - Other metadata
+
+% TODO: other ideas here
+
+
+% 2.TO WRITE
+
+
+\subsection{No blockchain}
+
+The pillar 1 explains clearly how by design blockchains can't be used \dots
+
+TO WRITE
+
+\section{Literature Cited}
+
+\section{Appendices}
+
+\section{Conclusion}
+TO WRITE?
+
 \end{document}
