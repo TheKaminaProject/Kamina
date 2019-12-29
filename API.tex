@@ -41,23 +41,26 @@
 
 \section{Global meta-data}
 
-\begin{itemize}
-    \item GET /api/graph
-    \begin{itemize}
-        \item Root Room ID
-        \item Root Room name, description, image and other metadata are used for Server name, description, image and so on
-        \item 200 if Root Room exists
-        \item 404 if Root Room does not exist
-        \item 403 if Root Room does not have public permissions
-      
-    \end{itemize}
-    \item POST /api/graph/change\_root
-    \begin{itemize}
-        \item New Root Room ID
+\begin{verbatim}
 
-    \end{itemize}
+curl -X GET http://localhost:9001/api/graph
 
-\end{itemize}
+    {
+        "root": "id"
+    }
+
+\end{verbatim}
+
+The server name, description and other metadata is not needed to be saved elsewhere, it would be redundant, that same data is actually the data of the Root  Room.
+
+Return Codes:
+\begin{verbatim}
+    200 if Root Room exists
+    404 if Root Room does not exist
+    403 if Root Room does not have public permissions
+
+\end{verbatim}
+
 
 
 
