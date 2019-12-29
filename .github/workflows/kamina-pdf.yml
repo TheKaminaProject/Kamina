@@ -21,7 +21,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: https://github.com/TheKaminaProject/Kamina/releases/tag/1.StellarEngine
+        upload_url: upload_url: https://uploads.github.com/repos/TheKaminaProject/Kamina/releases/1.StellarEngine/assets{?name,label}
         asset_path: ./Kamina.pdf
         asset_name: Kamina.pdf
         asset_content_type: application/pdf
