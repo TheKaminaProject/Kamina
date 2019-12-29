@@ -1,0 +1,102 @@
+ 
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+ 
+\urlstyle{same}
+\usepackage{graphicx}
+
+
+\usepackage{array}
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
+\newcommand{\bigO}{\mathcal{O}}
+\begin{document}
+
+\title
+{
+    Kamina \\
+    REST API Specifications \\
+}
+\author
+{
+    Federico Santamorena \\
+    \href{https://github.com/yatima1460/Kamina}{https://github.com/yatima1460/Kamina} \\ 
+}
+\maketitle
+
+
+
+\section{Global meta-data}
+
+\begin{itemize}
+    \item GET /api/graph
+    \begin{itemize}
+        \item Root Room ID
+        \item Root Room name, description, image and other metadata are used for Server name, description, image and so on
+        \item 200 if Root Room exists
+        \item 404 if Root Room does not exist
+        \item 403 if Root Room does not have public permissions
+      
+    \end{itemize}
+    \item POST /api/graph/change\_root
+    \begin{itemize}
+        \item New Root Room ID
+
+    \end{itemize}
+
+\end{itemize}
+
+
+
+\section{Rooms}
+
+
+\begin{itemize}
+    \item POST /api/graph/create\_room
+    \begin{itemize}
+        \item returns Room ID
+    \end{itemize}
+    \item POST /api/graph/ID/name
+    \begin{itemize}
+        \item change Room name
+    \end{itemize}
+    \item GET /api/graph/ID/name
+    \begin{itemize}
+        \item get Room name
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item POST /api/room/ID
+    \begin{itemize}
+        \item Owner
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item GET /api/room/ID
+    \begin{itemize}
+        \item Owner
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Messages}
+
+
+
+\end{document}
