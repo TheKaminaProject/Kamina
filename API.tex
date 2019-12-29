@@ -62,6 +62,7 @@ Return Codes:
 \filbreak
 \section{Rooms}
 
+\filbreak
 \subsection{Get Room Info}
 \begin{verbatim}
 
@@ -85,7 +86,7 @@ Return Codes:
 
 
 
-
+\filbreak
 \subsection{Change Room name}
 
 \begin{verbatim}
@@ -106,7 +107,34 @@ Return Codes:
 \end{verbatim}
 
 
-// create room returns Room ID
+
+
+\filbreak
+\subsection{Create Room}
+
+\begin{verbatim}
+
+curl -X POST http://localhost:9001/api/graph/new
+
+\end{verbatim}
+
+Return JSON should be:
+
+\begin{verbatim}
+    { 
+        "id": "ID" 
+    }
+
+\end{verbatim}
+
+Return Codes:
+\begin{verbatim}
+    201 if Room created
+    404 if Room does not exist
+    403 if user not registered in social network
+    507 not enough room for a new Room
+\end{verbatim}
+
 
 
 \section{Messages}
