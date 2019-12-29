@@ -15,7 +15,6 @@ jobs:
       run: sudo apt install latexmk
     - name: build pdf
       run: latexmk API.tex -pdf
-        asset_content_type: application/pdf
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1.0.1
