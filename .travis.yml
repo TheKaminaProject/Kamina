@@ -17,3 +17,4 @@ deploy:
     - "Design.pdf"
     - "API.pdf"
   skip_cleanup: true
+  overwrite: true
