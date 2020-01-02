@@ -125,9 +125,15 @@ Return JSON should be:
         "id": "ID" 
     }
 
-\end{verbatim}
 
+
+\end{verbatim}
+The server is free to decide the name and metadata of the new void Room, like "New Room", the ID or whatever 
+\newline
+By default a new Room created with an empty POST should ALWAYS have the stricter permissions of 700.
+\newline
 Return Codes:
+
 \begin{verbatim}
     201 if Room created
     404 if Room does not exist
@@ -136,7 +142,7 @@ Return Codes:
 \end{verbatim}
 
 
-
+\newpage
 \section{Messages}
 
 
