@@ -8,6 +8,7 @@ script:
  - latexmk Design.tex -pdf
  - latexmk API.tex -pdf
  - latexmk Glossary.tex -pdf
+ - zip "1.$TRAVIS_BUILD_NUMBER StellarEngine.zip" *.pdf
 
 
 deploy:
@@ -16,6 +17,7 @@ deploy:
   tag_name: 1.$TRAVIS_BUILD_NUMBER
   name: 1.$TRAVIS_BUILD_NUMBER StellarEngine
   file:
+    - "1.$TRAVIS_BUILD_NUMBER StellarEngine.zip"
     - "Design.pdf"
     - "API.pdf"
     - "Glossary.pdf"
